@@ -13,11 +13,47 @@ namespace GdiSharpDemo
             InitializeComponent();
         }
 
-        private void InitConentAligntmentComboBox()
+        protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
 
+            InitHorizontalAligntmentComboBox();
+            InitVerticalAligntmentComboBox();
         }
+
+        private void InitHorizontalAligntmentComboBox()
+        {
+            var alignments = Enum.GetValues(typeof(GdiSharp.Enum.HorizontalAlignment));
+            foreach (var item in alignments)
+            {
+                cboHorizontalAlignment.Items.Add(item);
+            }
+
+            cboHorizontalAlignment.SelectedIndex = 0;
+            cboHorizontalAlignment.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cboHorizontalAlignment.SelectedIndexChanged += (x,y) => Render();
+        }
+
+        private void InitVerticalAligntmentComboBox()
+        {
+            var alignments = Enum.GetValues(typeof(GdiSharp.Enum.VerticalAlignment));
+            foreach (var item in alignments)
+            {
+                cboVerticalAlignment.Items.Add(item);
+            }
+
+            cboVerticalAlignment.SelectedIndex = 0;
+            cboVerticalAlignment.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboVerticalAlignment.SelectedIndexChanged += (x, y) => Render();
+        }
+
         private void Button1_Click(object sender, EventArgs e)
+        {
+            Render();
+        }
+
+        private void Render()
         {
             var image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             var renderer = new GdiRenderer(image);
@@ -40,7 +76,8 @@ namespace GdiSharpDemo
                 Font = this.Font,
                 Content = "AAA dfdfgf",
                 Color = Color.White,
-                ContentAlignment = ContentAlignment.MiddleCenter
+                HorizontalAlignment = (GdiSharp.Enum.HorizontalAlignment)cboHorizontalAlignment.SelectedItem,
+                VerticalAlignment = (GdiSharp.Enum.VerticalAlignment)cboVerticalAlignment.SelectedItem,
             };
             childRect.AddChild(text);
             container.AddChild(childRect);

@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRender = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboContentAlignment = new System.Windows.Forms.ComboBox();
+            this.cboHorizontalAlignment = new System.Windows.Forms.ComboBox();
+            this.cboVerticalAlignment = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,42 +49,61 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnRender
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(870, 117);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 36);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Radar Chart";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnRender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRender.Location = new System.Drawing.Point(890, 116);
+            this.btnRender.Name = "btnRender";
+            this.btnRender.Size = new System.Drawing.Size(118, 36);
+            this.btnRender.TabIndex = 8;
+            this.btnRender.Text = "Render";
+            this.btnRender.UseVisualStyleBackColor = true;
+            this.btnRender.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(781, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Content Alignment";
+            this.label1.Text = "Horizontal Alignment";
             // 
-            // cboContentAlignment
+            // cboHorizontalAlignment
             // 
-            this.cboContentAlignment.FormattingEnabled = true;
-            this.cboContentAlignment.Location = new System.Drawing.Point(897, 17);
-            this.cboContentAlignment.Name = "cboContentAlignment";
-            this.cboContentAlignment.Size = new System.Drawing.Size(174, 21);
-            this.cboContentAlignment.TabIndex = 10;
+            this.cboHorizontalAlignment.FormattingEnabled = true;
+            this.cboHorizontalAlignment.Location = new System.Drawing.Point(890, 21);
+            this.cboHorizontalAlignment.Name = "cboHorizontalAlignment";
+            this.cboHorizontalAlignment.Size = new System.Drawing.Size(174, 21);
+            this.cboHorizontalAlignment.TabIndex = 10;
+            // 
+            // cboVerticalAlignment
+            // 
+            this.cboVerticalAlignment.FormattingEnabled = true;
+            this.cboVerticalAlignment.Location = new System.Drawing.Point(890, 65);
+            this.cboVerticalAlignment.Name = "cboVerticalAlignment";
+            this.cboVerticalAlignment.Size = new System.Drawing.Size(174, 21);
+            this.cboVerticalAlignment.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(781, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Vertical Alignment";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 601);
-            this.Controls.Add(this.cboContentAlignment);
+            this.Controls.Add(this.cboVerticalAlignment);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboHorizontalAlignment);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRender);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -95,9 +116,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRender;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboContentAlignment;
+        private System.Windows.Forms.ComboBox cboHorizontalAlignment;
+        private System.Windows.Forms.ComboBox cboVerticalAlignment;
+        private System.Windows.Forms.Label label2;
     }
 }
 

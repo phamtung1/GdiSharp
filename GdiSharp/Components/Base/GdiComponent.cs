@@ -11,7 +11,9 @@ namespace GdiSharp.Components.Base
 
         internal PointF AbsolutePosition { get; set; }
 
-        public ContentAlignment ContentAlignment { get; set; } = ContentAlignment.TopLeft;
+        public HorizontalAlignment HorizontalAlignment { get; set; } = HorizontalAlignment.Left;
+
+        public VerticalAlignment VerticalAlignment { get; set; } = VerticalAlignment.Top;
 
         public GdiComponent Parent { get; set; }
 

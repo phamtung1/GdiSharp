@@ -18,62 +18,54 @@ namespace GdiSharp.Components
         {
             using (var brush = new SolidBrush(this.Color))
             {
-                var position = GetPosition(graphics);
-                graphics.DrawString(this.Content, this.Font, brush, position);
+                (float x, float y) = GetPosition(graphics);
+                graphics.DrawString(this.Content, this.Font, brush, x , y);
             }
         }
 
-        private PointF GetPosition(Graphics graphics)
+        private (float x, float y) GetPosition(Graphics graphics)
         {
             if (this.Parent == null)
             {
-                return new PointF(this.X, this.Y);
+                return (this.X, this.Y);
             }
 
-            var point = new PointF(this.Parent.AbsolutePosition.X + this.X, this.Parent.AbsolutePosition.Y + this.Y);
+            float x = 0;
+            float y = 0;
+            //var point = new PointF(this.Parent.AbsolutePosition.X + this.X, this.Parent.AbsolutePosition.Y + this.Y);
             var size = graphics.MeasureString(this.Content, this.Font);
-            
-            switch (this.ContentAlignment)
+            switch (this.HorizontalAlignment)
             {
-                case ContentAlignment.MiddleLeft:
-                    point.Y = this.Parent.AbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
+                case HorizontalAlignment.Left:
+                    x = this.Parent.AbsolutePosition.X + this.X;
                     break;
 
-                case ContentAlignment.MiddleCenter:
-                    point.X = this.Parent.AbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
-                    point.Y = this.Parent.AbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
+                case HorizontalAlignment.Center:
+                    x = this.Parent.AbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
                     break;
-
-                case ContentAlignment.MiddleRight:
-                    point.X = this.Parent.AbsolutePosition.X + this.Parent.Width - size.Width - this.X;
-                    point.Y = this.Parent.AbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
-                    break;
-
-                case ContentAlignment.BottomLeft:
-                    point.Y = this.Parent.AbsolutePosition.Y + this.Parent.Height - size.Height - this.Y;
-                    break;
-                case ContentAlignment.BottomCenter:
-                    point.X = this.Parent.AbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
-                    point.Y = this.Parent.AbsolutePosition.Y + this.Parent.Height - size.Height - this.Y;
-                    break;
-
-                case ContentAlignment.BottomRight:
-                    point.X = this.Parent.AbsolutePosition.X + this.Parent.Width - size.Width - this.X;
-                    point.Y = this.Parent.AbsolutePosition.Y + this.Parent.Height - size.Height - this.Y;
-                    break;
-
-                //case DockStyle.Center:
-                //    point.X = this.Parent.AbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
-                //    point.Y = this.Parent.AbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
-                //    break;
-
-
 
                 default:
+                    x = this.Parent.AbsolutePosition.X + this.Parent.Width - size.Width - this.X;
                     break;
             }
 
-            return point;
+            switch (this.VerticalAlignment)
+            {
+                case VerticalAlignment.Top:
+                    y = this.Parent.AbsolutePosition.Y + this.Y;
+                    break;
+
+                case VerticalAlignment.Middle:
+                    y = this.Parent.AbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
+                    break;
+
+                default:
+                    y = this.Parent.AbsolutePosition.Y + this.Parent.Height - size.Height - this.Y;
+                    break;
+            }
+
+
+            return (x, y);
         }
     }
 }
