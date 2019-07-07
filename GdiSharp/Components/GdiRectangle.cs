@@ -7,21 +7,12 @@ namespace GdiSharp.Components
     {
         public override void Render(Graphics graphics)
         {
-            var position = GetPosition();
+            var position = GetPosition(graphics);
+            this.AbsolutePosition = new PointF(position.x, position.y);
             using (var brush = new SolidBrush(this.Color))
             {
-                graphics.FillRectangle(brush, position.X, position.Y, this.Width, this.Height);
+                graphics.FillRectangle(brush, position.x, position.y, this.Width, this.Height);
             }
-        }
-
-        private PointF GetPosition()
-        {
-            var position = this.Parent == null ?
-                    new PointF(this.X, this.Y) :
-                    new PointF(this.Parent.AbsolutePosition.X + this.X, this.Parent.AbsolutePosition.Y + this.Y);
-
-            this.AbsolutePosition = position;
-            return position;
         }
     }
 }

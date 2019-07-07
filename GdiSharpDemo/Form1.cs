@@ -1,4 +1,5 @@
 ﻿using GdiSharp.Components;
+using GdiSharp.Components.Base;
 using GdiSharp.Renderer;
 using System;
 using System.Drawing;
@@ -17,8 +18,24 @@ namespace GdiSharpDemo
         {
             base.OnLoad(e);
 
+            InitComponentComboBox();
             InitHorizontalAligntmentComboBox();
             InitVerticalAligntmentComboBox();
+
+            numMarginX.ValueChanged += (x, y) => Render();
+            numMarginY.ValueChanged += (x, y) => Render();
+
+            Render();
+        }
+        private void InitComponentComboBox()
+        {
+            cboComponent.Items.Add(nameof(GdiText));
+            cboComponent.Items.Add(nameof(GdiRectangle));
+
+            cboComponent.SelectedIndex = 0;
+            cboComponent.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cboComponent.SelectedIndexChanged += (x, y) => Render();
         }
 
         private void InitHorizontalAligntmentComboBox()
@@ -65,25 +82,57 @@ namespace GdiSharpDemo
             };
             var childRect = new GdiRectangle
             {
-                X = 100,
-                Y = 100,
+                MarginX = 100,
+                MarginY = 100,
                 Width = 200,
                 Height = 300,
-                Color = Color.Green
+                Color = Color.Gray
             };
-            var text = new GdiText
-            {
-                Font = this.Font,
-                Content = "AAA dfdfgf",
-                Color = Color.White,
-                HorizontalAlignment = (GdiSharp.Enum.HorizontalAlignment)cboHorizontalAlignment.SelectedItem,
-                VerticalAlignment = (GdiSharp.Enum.VerticalAlignment)cboVerticalAlignment.SelectedItem,
-            };
-            childRect.AddChild(text);
+            
+            var component = CreateComponent(cboComponent.SelectedItem.ToString());
+            component.HorizontalAlignment = (GdiSharp.Enum.HorizontalAlignment)cboHorizontalAlignment.SelectedItem;
+            component.VerticalAlignment = (GdiSharp.Enum.VerticalAlignment)cboVerticalAlignment.SelectedItem;
+            component.MarginX = (float)numMarginX.Value;
+            component.MarginY = (float)numMarginY.Value;
+
+            childRect.AddChild(component);
             container.AddChild(childRect);
 
             renderer.Render(container);
+            if(pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Dispose();
+                pictureBox1.Image = null;
+            }
+
             pictureBox1.Image = image;
+        }
+
+        private GdiComponent CreateComponent(string name)
+        {
+            switch (name)
+            {
+                case nameof(GdiText):
+                    return new GdiText
+                    {
+                        Font = this.Font,
+                        Content = "AAA dfdfgf",
+                        Color = Color.Cyan,
+                    };
+
+                case nameof(GdiRectangle):
+                    return new GdiRectangle
+                    {
+                        MarginX = 5,
+                        MarginY = 5,
+                        Width = 100,
+                        Height = 50,
+                        Color = Color.Yellow
+                    };
+
+                default:
+                    throw new ArgumentException("Invalid name");
+            }
         }
     }
 }
