@@ -13,7 +13,7 @@ namespace GdiSharp.Renderer
             _image = image;
         }
 
-        public void Render(GdiComponent component)
+        public void Render(GdiContainer component)
         {
             using (var graphics = Graphics.FromImage(_image))
             {
@@ -21,12 +21,18 @@ namespace GdiSharp.Renderer
             }
         }
 
+        public Graphics GetGraphics()
+        {
+            return Graphics.FromImage(_image);
+        }
+
         private void RenderComponent(Graphics graphics, GdiComponent component)
         {
             component.Render(graphics);
-            if (component.Children != null && component.Children.Any())
+            var container = component as GdiContainer;
+            if (container != null && container.Children != null && container.Children.Any())
             {
-                foreach (var item in component.Children)
+                foreach (var item in container.Children)
                 {
                     RenderComponent(graphics, item);
                 }

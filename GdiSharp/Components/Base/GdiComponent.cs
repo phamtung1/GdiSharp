@@ -1,42 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GdiSharp.Enum;
+using System;
 using System.Drawing;
-using GdiSharp.Enum;
 
 namespace GdiSharp.Components.Base
 {
-    public class GdiComponent : IGdiComponent
+    public abstract class GdiComponent : IGdiComponent
     {
-        public Color Color { get; set; }
-
-        internal PointF AbsolutePosition { get; set; }
-
         public HorizontalAlignment HorizontalAlignment { get; set; } = HorizontalAlignment.Left;
 
         public VerticalAlignment VerticalAlignment { get; set; } = VerticalAlignment.Top;
 
-        public GdiComponent Parent { get; set; }
+        public Color Color { get; set; }
 
-        public float MarginX { get; set; }
+        public GdiContainer Parent { get; set; }
 
-        public float MarginY { get; set; }
+        public float X { get; set; }
 
-        public int Width { get; set; }
-
-        public int Height { get; set; }
-
-        internal IList<GdiComponent> Children { get; set; }
-
-        public void AddChild(GdiComponent component)
-        {
-            if (Children == null)
-            {
-                Children = new List<GdiComponent>();
-            }
-
-            component.Parent = this;
-            Children.Add(component);
-        }
+        public float Y { get; set; }
 
         public virtual void Render(Graphics graphics)
         {
@@ -45,50 +25,51 @@ namespace GdiSharp.Components.Base
 
         protected virtual SizeF GetComponentSize(Graphics graphics)
         {
-            return new SizeF(this.Width, this.Height);
+            return new SizeF(0, 0);
         }
 
-        protected (float x, float y) GetPosition(Graphics graphics)
+        protected virtual PointF GetAbsolutePosition(Graphics graphics)
         {
             if (this.Parent == null)
             {
-                return (this.MarginX, this.MarginY);
+                return new PointF(this.X, this.Y);
             }
 
-            float x;
-            float y;
+            var parentAbsolutePosition = this.Parent.GetAbsolutePosition(graphics);
+            float absoluteX;
+            float absoluteY;
             var size = GetComponentSize(graphics);
             switch (this.HorizontalAlignment)
             {
                 case HorizontalAlignment.Left:
-                    x = this.Parent.AbsolutePosition.X + this.MarginX;
+                    absoluteX = parentAbsolutePosition.X + this.X;
                     break;
 
                 case HorizontalAlignment.Center:
-                    x = this.Parent.AbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
+                    absoluteX = parentAbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
                     break;
 
                 default:
-                    x = this.Parent.AbsolutePosition.X + this.Parent.Width - size.Width - this.MarginX;
+                    absoluteX = parentAbsolutePosition.X + this.Parent.Width - size.Width - this.X;
                     break;
             }
 
             switch (this.VerticalAlignment)
             {
                 case VerticalAlignment.Top:
-                    y = this.Parent.AbsolutePosition.Y + this.MarginY;
+                    absoluteY = parentAbsolutePosition.Y + this.Y;
                     break;
 
                 case VerticalAlignment.Middle:
-                    y = this.Parent.AbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
+                    absoluteY = parentAbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
                     break;
 
                 default:
-                    y = this.Parent.AbsolutePosition.Y + this.Parent.Height - size.Height - this.MarginY;
+                    absoluteY = parentAbsolutePosition.Y + this.Parent.Height - size.Height - this.Y;
                     break;
             }
 
-            return (x, y);
+            return new PointF(absoluteX, absoluteY);
         }
     }
 }

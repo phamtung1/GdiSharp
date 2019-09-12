@@ -1,15 +1,11 @@
-﻿using System.Drawing;
-using GdiSharp.Components.Base;
+﻿using GdiSharp.Components.Base;
+using System.Drawing;
 
 namespace GdiSharp.Components
 {
-    public class GdiText : GdiComponent
+    public class GdiText : GdiContainer
     {
         public string Content { get; set; }
-
-        //public bool IsDockOutside { get; set; } = false;
-
-        //public TextAlignment Alignment { get; set; } = TextAlignment.Left;
 
         public Font Font { get; set; }
 
@@ -17,8 +13,8 @@ namespace GdiSharp.Components
         {
             using (var brush = new SolidBrush(this.Color))
             {
-                (float x, float y) = GetPosition(graphics);
-                graphics.DrawString(this.Content, this.Font, brush, x, y);
+                var position = GetAbsolutePosition(graphics);
+                graphics.DrawString(this.Content, this.Font, brush, position);
             }
         }
 

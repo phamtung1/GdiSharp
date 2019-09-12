@@ -27,10 +27,13 @@ namespace GdiSharpDemo
 
             Render();
         }
+
         private void InitComponentComboBox()
         {
             cboComponent.Items.Add(nameof(GdiText));
             cboComponent.Items.Add(nameof(GdiRectangle));
+            cboComponent.Items.Add(nameof(GdiHozLine));
+            cboComponent.Items.Add(nameof(GdiVerLine));
 
             cboComponent.SelectedIndex = 0;
             cboComponent.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -49,7 +52,7 @@ namespace GdiSharpDemo
             cboHorizontalAlignment.SelectedIndex = 0;
             cboHorizontalAlignment.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            cboHorizontalAlignment.SelectedIndexChanged += (x,y) => Render();
+            cboHorizontalAlignment.SelectedIndexChanged += (x, y) => Render();
         }
 
         private void InitVerticalAligntmentComboBox()
@@ -74,7 +77,7 @@ namespace GdiSharpDemo
         {
             var image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             var renderer = new GdiRenderer(image);
-            var container = new GdiRectangle
+            var rootContainer = new GdiRectangle
             {
                 Width = image.Width,
                 Height = image.Height,
@@ -82,24 +85,25 @@ namespace GdiSharpDemo
             };
             var childRect = new GdiRectangle
             {
-                MarginX = 100,
-                MarginY = 100,
+                X = 100,
+                Y = 100,
                 Width = 200,
                 Height = 300,
                 Color = Color.Gray
             };
-            
+
             var component = CreateComponent(cboComponent.SelectedItem.ToString());
+            component.X = (float)numMarginX.Value;
+            component.Y = (float)numMarginY.Value;
+
             component.HorizontalAlignment = (GdiSharp.Enum.HorizontalAlignment)cboHorizontalAlignment.SelectedItem;
             component.VerticalAlignment = (GdiSharp.Enum.VerticalAlignment)cboVerticalAlignment.SelectedItem;
-            component.MarginX = (float)numMarginX.Value;
-            component.MarginY = (float)numMarginY.Value;
 
             childRect.AddChild(component);
-            container.AddChild(childRect);
+            rootContainer.AddChild(childRect);
 
-            renderer.Render(container);
-            if(pictureBox1.Image != null)
+            renderer.Render(rootContainer);
+            if (pictureBox1.Image != null)
             {
                 pictureBox1.Image.Dispose();
                 pictureBox1.Image = null;
@@ -123,11 +127,29 @@ namespace GdiSharpDemo
                 case nameof(GdiRectangle):
                     return new GdiRectangle
                     {
-                        MarginX = 5,
-                        MarginY = 5,
+                        X = 5,
+                        Y = 5,
                         Width = 100,
                         Height = 50,
                         Color = Color.Yellow
+                    };
+
+                case nameof(GdiHozLine):
+                    return new GdiHozLine
+                    {
+                        X = 5,
+                        Y = 5,
+                        Length = 200,
+                        Color = Color.Cyan
+                    };
+
+                case nameof(GdiVerLine):
+                    return new GdiVerLine
+                    {
+                        X = 5,
+                        Y = 5,
+                        Color = Color.Cyan,
+                        Length = 200
                     };
 
                 default:

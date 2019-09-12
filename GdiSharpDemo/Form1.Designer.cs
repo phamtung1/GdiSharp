@@ -52,7 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(27, 26);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(728, 449);
             this.pictureBox1.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             this.btnRender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRender.Location = new System.Drawing.Point(882, 300);
-            this.btnRender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRender.Margin = new System.Windows.Forms.Padding(4);
             this.btnRender.Name = "btnRender";
             this.btnRender.Size = new System.Drawing.Size(157, 44);
             this.btnRender.TabIndex = 8;
@@ -84,7 +84,7 @@
             // 
             this.cboHorizontalAlignment.FormattingEnabled = true;
             this.cboHorizontalAlignment.Location = new System.Drawing.Point(934, 78);
-            this.cboHorizontalAlignment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboHorizontalAlignment.Margin = new System.Windows.Forms.Padding(4);
             this.cboHorizontalAlignment.Name = "cboHorizontalAlignment";
             this.cboHorizontalAlignment.Size = new System.Drawing.Size(231, 24);
             this.cboHorizontalAlignment.TabIndex = 10;
@@ -93,7 +93,7 @@
             // 
             this.cboVerticalAlignment.FormattingEnabled = true;
             this.cboVerticalAlignment.Location = new System.Drawing.Point(934, 132);
-            this.cboVerticalAlignment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboVerticalAlignment.Margin = new System.Windows.Forms.Padding(4);
             this.cboVerticalAlignment.Name = "cboVerticalAlignment";
             this.cboVerticalAlignment.Size = new System.Drawing.Size(231, 24);
             this.cboVerticalAlignment.TabIndex = 12;
@@ -112,7 +112,7 @@
             // 
             this.cboComponent.FormattingEnabled = true;
             this.cboComponent.Location = new System.Drawing.Point(934, 26);
-            this.cboComponent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboComponent.Margin = new System.Windows.Forms.Padding(4);
             this.cboComponent.Name = "cboComponent";
             this.cboComponent.Size = new System.Drawing.Size(231, 24);
             this.cboComponent.TabIndex = 14;
@@ -133,9 +133,9 @@
             this.label4.Location = new System.Drawing.Point(789, 188);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 16);
+            this.label4.Size = new System.Drawing.Size(16, 16);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Margin X";
+            this.label4.Text = "X";
             // 
             // label5
             // 
@@ -143,9 +143,9 @@
             this.label5.Location = new System.Drawing.Point(789, 235);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 16);
+            this.label5.Size = new System.Drawing.Size(17, 16);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Margin Y";
+            this.label5.Text = "Y";
             // 
             // numMarginX
             // 
@@ -209,7 +209,7 @@
             this.Controls.Add(this.btnRender);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

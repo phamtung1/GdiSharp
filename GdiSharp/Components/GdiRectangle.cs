@@ -3,15 +3,14 @@ using System.Drawing;
 
 namespace GdiSharp.Components
 {
-    public class GdiRectangle : GdiComponent
+    public class GdiRectangle : GdiContainer
     {
         public override void Render(Graphics graphics)
         {
-            var position = GetPosition(graphics);
-            this.AbsolutePosition = new PointF(position.x, position.y);
+            var position = GetAbsolutePosition(graphics);
             using (var brush = new SolidBrush(this.Color))
             {
-                graphics.FillRectangle(brush, position.x, position.y, this.Width, this.Height);
+                graphics.FillRectangle(brush, position.X, position.Y, this.Width, this.Height);
             }
         }
     }
