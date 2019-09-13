@@ -6,13 +6,13 @@ namespace GdiSharp.Components.Base
 {
     public abstract class GdiComponent : IGdiComponent
     {
-        public HorizontalAlignment HorizontalAlignment { get; set; } = HorizontalAlignment.Left;
+        public GdiHorizontalAlign HorizontalAlignment { get; set; } = GdiHorizontalAlign.Left;
 
-        public VerticalAlignment VerticalAlignment { get; set; } = VerticalAlignment.Top;
+        public GdiVerticalAlign VerticalAlignment { get; set; } = GdiVerticalAlign.Top;
 
         public Color Color { get; set; }
 
-        public GdiContainer Parent { get; set; }
+        public GdiComponent Parent { get; set; }
 
         public float X { get; set; }
 
@@ -39,33 +39,35 @@ namespace GdiSharp.Components.Base
             float absoluteX;
             float absoluteY;
             var size = GetComponentSize(graphics);
+            var parentSize = this.Parent.GetComponentSize(graphics);
+
             switch (this.HorizontalAlignment)
             {
-                case HorizontalAlignment.Left:
+                case GdiHorizontalAlign.Left:
                     absoluteX = parentAbsolutePosition.X + this.X;
                     break;
 
-                case HorizontalAlignment.Center:
-                    absoluteX = parentAbsolutePosition.X + (this.Parent.Width - size.Width) / 2;
+                case GdiHorizontalAlign.Center:
+                    absoluteX = parentAbsolutePosition.X + (parentSize.Width - size.Width) / 2;
                     break;
 
                 default:
-                    absoluteX = parentAbsolutePosition.X + this.Parent.Width - size.Width - this.X;
+                    absoluteX = parentAbsolutePosition.X + parentSize.Width - size.Width - this.X;
                     break;
             }
 
             switch (this.VerticalAlignment)
             {
-                case VerticalAlignment.Top:
+                case GdiVerticalAlign.Top:
                     absoluteY = parentAbsolutePosition.Y + this.Y;
                     break;
 
-                case VerticalAlignment.Middle:
-                    absoluteY = parentAbsolutePosition.Y + (this.Parent.Height - size.Height) / 2;
+                case GdiVerticalAlign.Middle:
+                    absoluteY = parentAbsolutePosition.Y + (parentSize.Height - size.Height) / 2;
                     break;
 
                 default:
-                    absoluteY = parentAbsolutePosition.Y + this.Parent.Height - size.Height - this.Y;
+                    absoluteY = parentAbsolutePosition.Y + parentSize.Height - size.Height - this.Y;
                     break;
             }
 

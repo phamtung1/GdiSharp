@@ -1,6 +1,6 @@
 ﻿namespace GdiSharp.Enum
 {
-    public enum HorizontalAlignment
+    public enum GdiHorizontalAlign
     {
         Left,
         Center,

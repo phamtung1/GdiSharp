@@ -1,10 +1,9 @@
 ﻿namespace GdiSharp.Enum
 {
-    public enum TextAlignment
+    public enum GdiVerticalAlign
     {
-        Left,
         Top,
-        Right,
+        Middle,
         Bottom
     }
 }

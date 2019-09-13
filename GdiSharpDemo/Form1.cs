@@ -34,6 +34,7 @@ namespace GdiSharpDemo
             cboComponent.Items.Add(nameof(GdiRectangle));
             cboComponent.Items.Add(nameof(GdiHozLine));
             cboComponent.Items.Add(nameof(GdiVerLine));
+            cboComponent.Items.Add(nameof(GdiGrid));
 
             cboComponent.SelectedIndex = 0;
             cboComponent.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -43,7 +44,7 @@ namespace GdiSharpDemo
 
         private void InitHorizontalAligntmentComboBox()
         {
-            var alignments = Enum.GetValues(typeof(GdiSharp.Enum.HorizontalAlignment));
+            var alignments = Enum.GetValues(typeof(GdiSharp.Enum.GdiHorizontalAlign));
             foreach (var item in alignments)
             {
                 cboHorizontalAlignment.Items.Add(item);
@@ -57,7 +58,7 @@ namespace GdiSharpDemo
 
         private void InitVerticalAligntmentComboBox()
         {
-            var alignments = Enum.GetValues(typeof(GdiSharp.Enum.VerticalAlignment));
+            var alignments = Enum.GetValues(typeof(GdiSharp.Enum.GdiVerticalAlign));
             foreach (var item in alignments)
             {
                 cboVerticalAlignment.Items.Add(item);
@@ -85,10 +86,10 @@ namespace GdiSharpDemo
             };
             var childRect = new GdiRectangle
             {
-                X = 100,
-                Y = 100,
-                Width = 200,
-                Height = 300,
+                X = 50,
+                Y = 50,
+                Width = 600,
+                Height = 400,
                 Color = Color.Gray
             };
 
@@ -96,8 +97,8 @@ namespace GdiSharpDemo
             component.X = (float)numMarginX.Value;
             component.Y = (float)numMarginY.Value;
 
-            component.HorizontalAlignment = (GdiSharp.Enum.HorizontalAlignment)cboHorizontalAlignment.SelectedItem;
-            component.VerticalAlignment = (GdiSharp.Enum.VerticalAlignment)cboVerticalAlignment.SelectedItem;
+            component.HorizontalAlignment = (GdiSharp.Enum.GdiHorizontalAlign)cboHorizontalAlignment.SelectedItem;
+            component.VerticalAlignment = (GdiSharp.Enum.GdiVerticalAlign)cboVerticalAlignment.SelectedItem;
 
             childRect.AddChild(component);
             rootContainer.AddChild(childRect);
@@ -150,6 +151,17 @@ namespace GdiSharpDemo
                         Y = 5,
                         Color = Color.Cyan,
                         Length = 200
+                    };
+
+                case nameof(GdiGrid):
+                    return new GdiGrid
+                    {
+                        CellHeight = 10,
+                        CellWidth = 20,
+                        Width = 150,
+                        Height = 100,
+                        LineColor = Color.Cyan,
+                        GridBorderVisible = true
                     };
 
                 default:
