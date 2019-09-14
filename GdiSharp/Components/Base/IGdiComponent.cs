@@ -8,8 +8,8 @@ namespace GdiSharp.Components.Base
         Color Color { get; set; }
         GdiHorizontalAlign HorizontalAlignment { get; set; }
         GdiVerticalAlign VerticalAlignment { get; set; }
-        float X { get; set; }
-        float Y { get; set; }
+        float MarginLeft { get; set; }
+        float MarginTop { get; set; }
 
         void Render(Graphics graphics);
     }

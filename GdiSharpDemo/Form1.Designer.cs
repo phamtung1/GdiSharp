@@ -38,11 +38,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numMarginX = new System.Windows.Forms.NumericUpDown();
-            this.numMarginY = new System.Windows.Forms.NumericUpDown();
+            this.numMarginLeft = new System.Windows.Forms.NumericUpDown();
+            this.numMarginTop = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMarginX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMarginY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMarginLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMarginTop)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -133,9 +133,9 @@
             this.label4.Location = new System.Drawing.Point(789, 188);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 16);
+            this.label4.Size = new System.Drawing.Size(73, 16);
             this.label4.TabIndex = 15;
-            this.label4.Text = "X";
+            this.label4.Text = "Margin Left";
             // 
             // label5
             // 
@@ -143,49 +143,49 @@
             this.label5.Location = new System.Drawing.Point(789, 235);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 16);
+            this.label5.Size = new System.Drawing.Size(77, 16);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Y";
+            this.label5.Text = "Margin Top";
             // 
-            // numMarginX
+            // numMarginLeft
             // 
-            this.numMarginX.Location = new System.Drawing.Point(935, 182);
-            this.numMarginX.Maximum = new decimal(new int[] {
+            this.numMarginLeft.Location = new System.Drawing.Point(935, 182);
+            this.numMarginLeft.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numMarginX.Minimum = new decimal(new int[] {
+            this.numMarginLeft.Minimum = new decimal(new int[] {
             1000,
             0,
             0,
             -2147483648});
-            this.numMarginX.Name = "numMarginX";
-            this.numMarginX.Size = new System.Drawing.Size(229, 22);
-            this.numMarginX.TabIndex = 17;
-            this.numMarginX.Value = new decimal(new int[] {
+            this.numMarginLeft.Name = "numMarginLeft";
+            this.numMarginLeft.Size = new System.Drawing.Size(229, 22);
+            this.numMarginLeft.TabIndex = 17;
+            this.numMarginLeft.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // numMarginY
+            // numMarginTop
             // 
-            this.numMarginY.Location = new System.Drawing.Point(936, 233);
-            this.numMarginY.Maximum = new decimal(new int[] {
+            this.numMarginTop.Location = new System.Drawing.Point(936, 233);
+            this.numMarginTop.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numMarginY.Minimum = new decimal(new int[] {
+            this.numMarginTop.Minimum = new decimal(new int[] {
             1000,
             0,
             0,
             -2147483648});
-            this.numMarginY.Name = "numMarginY";
-            this.numMarginY.Size = new System.Drawing.Size(229, 22);
-            this.numMarginY.TabIndex = 18;
-            this.numMarginY.Value = new decimal(new int[] {
+            this.numMarginTop.Name = "numMarginTop";
+            this.numMarginTop.Size = new System.Drawing.Size(229, 22);
+            this.numMarginTop.TabIndex = 18;
+            this.numMarginTop.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -196,8 +196,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 547);
-            this.Controls.Add(this.numMarginY);
-            this.Controls.Add(this.numMarginX);
+            this.Controls.Add(this.numMarginTop);
+            this.Controls.Add(this.numMarginLeft);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboComponent);
@@ -213,8 +213,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMarginX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMarginY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMarginLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMarginTop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,8 +232,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numMarginX;
-        private System.Windows.Forms.NumericUpDown numMarginY;
+        private System.Windows.Forms.NumericUpDown numMarginLeft;
+        private System.Windows.Forms.NumericUpDown numMarginTop;
     }
 }
 

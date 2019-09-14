@@ -22,8 +22,8 @@ namespace GdiSharpDemo
             InitHorizontalAligntmentComboBox();
             InitVerticalAligntmentComboBox();
 
-            numMarginX.ValueChanged += (x, y) => Render();
-            numMarginY.ValueChanged += (x, y) => Render();
+            numMarginLeft.ValueChanged += (x, y) => Render();
+            numMarginTop.ValueChanged += (x, y) => Render();
 
             Render();
         }
@@ -86,16 +86,16 @@ namespace GdiSharpDemo
             };
             var childRect = new GdiRectangle
             {
-                X = 50,
-                Y = 50,
+                MarginLeft = 50,
+                MarginTop = 50,
                 Width = 600,
                 Height = 400,
                 Color = Color.Gray
             };
 
             var component = CreateComponent(cboComponent.SelectedItem.ToString());
-            component.X = (float)numMarginX.Value;
-            component.Y = (float)numMarginY.Value;
+            component.MarginLeft = (float)numMarginLeft.Value;
+            component.MarginTop = (float)numMarginTop.Value;
 
             component.HorizontalAlignment = (GdiSharp.Enum.GdiHorizontalAlign)cboHorizontalAlignment.SelectedItem;
             component.VerticalAlignment = (GdiSharp.Enum.GdiVerticalAlign)cboVerticalAlignment.SelectedItem;
@@ -128,8 +128,8 @@ namespace GdiSharpDemo
                 case nameof(GdiRectangle):
                     return new GdiRectangle
                     {
-                        X = 5,
-                        Y = 5,
+                        MarginLeft = 5,
+                        MarginTop = 5,
                         Width = 100,
                         Height = 50,
                         Color = Color.Yellow
@@ -138,8 +138,8 @@ namespace GdiSharpDemo
                 case nameof(GdiHozLine):
                     return new GdiHozLine
                     {
-                        X = 5,
-                        Y = 5,
+                        MarginLeft = 5,
+                        MarginTop = 5,
                         Length = 200,
                         Color = Color.Cyan
                     };
@@ -147,8 +147,8 @@ namespace GdiSharpDemo
                 case nameof(GdiVerLine):
                     return new GdiVerLine
                     {
-                        X = 5,
-                        Y = 5,
+                        MarginLeft = 5,
+                        MarginTop = 5,
                         Color = Color.Cyan,
                         Length = 200
                     };
