@@ -14,9 +14,7 @@ namespace GdiSharp.Components.Base
 
         public GdiComponent Parent { get; set; }
 
-        public float MarginLeft { get; set; }
-
-        public float MarginTop { get; set; }
+        public PointF Position { get; set; } = new PointF();
 
         public virtual void BeforeRendering()
         {
@@ -36,7 +34,7 @@ namespace GdiSharp.Components.Base
         {
             if (this.Parent == null)
             {
-                return new PointF(this.MarginLeft, this.MarginTop);
+                return Position;
             }
 
             var parentAbsolutePosition = this.Parent.GetAbsolutePosition(graphics);
@@ -48,7 +46,7 @@ namespace GdiSharp.Components.Base
             switch (this.HorizontalAlignment)
             {
                 case GdiHorizontalAlign.Left:
-                    absoluteX = parentAbsolutePosition.X + this.MarginLeft;
+                    absoluteX = parentAbsolutePosition.X + this.Position.X;
                     break;
 
                 case GdiHorizontalAlign.Center:
@@ -56,14 +54,14 @@ namespace GdiSharp.Components.Base
                     break;
 
                 default:
-                    absoluteX = parentAbsolutePosition.X + parentSize.Width - size.Width + this.MarginLeft;
+                    absoluteX = parentAbsolutePosition.X + parentSize.Width - size.Width + this.Position.X;
                     break;
             }
 
             switch (this.VerticalAlignment)
             {
                 case GdiVerticalAlign.Top:
-                    absoluteY = parentAbsolutePosition.Y + this.MarginTop;
+                    absoluteY = parentAbsolutePosition.Y + this.Position.Y;
                     break;
 
                 case GdiVerticalAlign.Middle:
@@ -71,7 +69,7 @@ namespace GdiSharp.Components.Base
                     break;
 
                 default:
-                    absoluteY = parentAbsolutePosition.Y + parentSize.Height - size.Height + this.MarginTop;
+                    absoluteY = parentAbsolutePosition.Y + parentSize.Height - size.Height + this.Position.Y;
                     break;
             }
 

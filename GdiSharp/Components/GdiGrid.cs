@@ -6,9 +6,7 @@ namespace GdiSharp.Components
 {
     public class GdiGrid : GdiRectangle
     {
-        public float CellWidth { get; set; }
-
-        public float CellHeight { get; set; }
+        public SizeF CellSize { get; set; }
 
         public Color LineColor { get; set; } = Color.LightGray;
 
@@ -44,7 +42,7 @@ namespace GdiSharp.Components
         {
             if (GridBorderVisible)
             {
-                graphics.DrawRectangle(pen, position.X, position.Y, Width, Height);
+                graphics.DrawRectangle(pen, position.X, position.Y, Size.Width, Size.Height);
             }
         }
 
@@ -52,11 +50,11 @@ namespace GdiSharp.Components
         {
             if (RowLinesVisible)
             {
-                var numOfRows = (int)Math.Ceiling(Height / CellHeight);
+                var numOfRows = (int)Math.Ceiling(Size.Height / CellSize.Height);
                 for (int i = 0; i < numOfRows; i++)
                 {
-                    var y = position.Y + i * CellHeight;
-                    graphics.DrawLine(pen, position.X, y, position.X + Width, y);
+                    var y = position.Y + i * CellSize.Height;
+                    graphics.DrawLine(pen, position.X, y, position.X + Size.Width, y);
                 }
             }
         }
@@ -65,11 +63,11 @@ namespace GdiSharp.Components
         {
             if (ColumnLinesVisible)
             {
-                var numOfColumns = (int)Math.Ceiling(Width / CellWidth);
+                var numOfColumns = (int)Math.Ceiling(Size.Width / CellSize.Width);
                 for (int i = 0; i < numOfColumns; i++)
                 {
-                    var x = position.X + i * CellWidth;
-                    graphics.DrawLine(pen, x, position.Y, x, position.Y + Height);
+                    var x = position.X + i * CellSize.Width;
+                    graphics.DrawLine(pen, x, position.Y, x, position.Y + Size.Height);
                 }
             }
         }
@@ -78,12 +76,12 @@ namespace GdiSharp.Components
         {
             if (ColumnLinesVisible)
             {
-                var startX = position.X + Width;
-                var numOfColumns = (int)Math.Ceiling(Width / CellWidth);
+                var startX = position.X + Size.Width;
+                var numOfColumns = (int)Math.Ceiling(Size.Width / CellSize.Width);
                 for (int i = 0; i < numOfColumns; i++)
                 {
-                    var x = startX - i * CellWidth;
-                    graphics.DrawLine(pen, x, position.Y, x, position.Y + Height);
+                    var x = startX - i * CellSize.Width;
+                    graphics.DrawLine(pen, x, position.Y, x, position.Y + Size.Height);
                 }
             }
         }

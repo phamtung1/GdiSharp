@@ -80,23 +80,18 @@ namespace GdiSharpDemo
             var renderer = new GdiRenderer(image);
             var rootContainer = new GdiRectangle
             {
-                Width = image.Width,
-                Height = image.Height,
+                Size = image.Size,
                 Color = Color.White
             };
             var childRect = new GdiRectangle
             {
-                MarginLeft = 50,
-                MarginTop = 50,
-                Width = 600,
-                Height = 400,
+                Position = new PointF(50, 50),
+                Size = new SizeF(600, 350),
                 Color = Color.Gray
             };
 
             var component = CreateComponent(cboComponent.SelectedItem.ToString());
-            component.MarginLeft = (float)numMarginLeft.Value;
-            component.MarginTop = (float)numMarginTop.Value;
-
+            component.Position = new PointF((float)numMarginLeft.Value, (float)numMarginTop.Value);
             component.HorizontalAlignment = (GdiSharp.Enum.GdiHorizontalAlign)cboHorizontalAlignment.SelectedItem;
             component.VerticalAlignment = (GdiSharp.Enum.GdiVerticalAlign)cboVerticalAlignment.SelectedItem;
 
@@ -128,18 +123,15 @@ namespace GdiSharpDemo
                 case nameof(GdiRectangle):
                     return new GdiRectangle
                     {
-                        MarginLeft = 5,
-                        MarginTop = 5,
-                        Width = 100,
-                        Height = 50,
+                        Position = new PointF(5, 5),
+                        Size = new SizeF(100, 50),
                         Color = Color.Yellow
                     };
 
                 case nameof(GdiHozLine):
                     return new GdiHozLine
                     {
-                        MarginLeft = 5,
-                        MarginTop = 5,
+                        Position = new PointF(5, 5),
                         Length = 200,
                         Color = Color.Cyan
                     };
@@ -147,8 +139,7 @@ namespace GdiSharpDemo
                 case nameof(GdiVerLine):
                     return new GdiVerLine
                     {
-                        MarginLeft = 5,
-                        MarginTop = 5,
+                        Position = new PointF(5, 5),
                         Color = Color.Cyan,
                         Length = 200
                     };
@@ -156,10 +147,8 @@ namespace GdiSharpDemo
                 case nameof(GdiGrid):
                     return new GdiGrid
                     {
-                        CellHeight = 10,
-                        CellWidth = 20,
-                        Width = 150,
-                        Height = 100,
+                        CellSize = new SizeF(20, 10),
+                        Size = new SizeF(150, 100),
                         LineColor = Color.Cyan,
                         GridBorderVisible = true
                     };
