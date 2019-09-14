@@ -1,6 +1,6 @@
-﻿using GdiSharp.Enum;
-using System;
+﻿using System;
 using System.Drawing;
+using GdiSharp.Enum;
 
 namespace GdiSharp.Components.Base
 {
@@ -17,6 +17,10 @@ namespace GdiSharp.Components.Base
         public float X { get; set; }
 
         public float Y { get; set; }
+
+        public virtual void BeforeRendering()
+        {
+        }
 
         public virtual void Render(Graphics graphics)
         {

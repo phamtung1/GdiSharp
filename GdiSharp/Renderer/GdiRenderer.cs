@@ -28,6 +28,7 @@ namespace GdiSharp.Renderer
 
         private void RenderComponent(Graphics graphics, GdiComponent component)
         {
+            component.BeforeRendering();
             component.Render(graphics);
             var container = component as GdiContainer;
             if (container != null && container.Children != null && container.Children.Any())
