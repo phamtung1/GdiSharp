@@ -22,7 +22,6 @@ namespace GdiSharp.Components.Base
 
         public virtual void Render(Graphics graphics)
         {
-            throw new NotImplementedException();
         }
 
         protected virtual SizeF GetComponentSize(Graphics graphics)
