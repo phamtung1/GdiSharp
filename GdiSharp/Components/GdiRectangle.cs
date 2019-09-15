@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using GdiSharp.Components.Base;
+using GdiSharp.Models;
 
 namespace GdiSharp.Components
 {
@@ -8,9 +9,7 @@ namespace GdiSharp.Components
     {
         public SizeF Size { get; set; }
 
-        public int BorderWidth { get; set; } = 0;
-
-        public Color BorderColor { get; set; } = Color.LightGray;
+        public Border Border { get; set; } = Border.Empty;
 
         protected override SizeF GetComponentSize(Graphics graphics)
         {
@@ -28,9 +27,9 @@ namespace GdiSharp.Components
             using (var brush = new SolidBrush(this.Color))
             {
                 graphics.FillRectangle(brush, position.X, position.Y, this.Size.Width, this.Size.Height);
-                if (BorderWidth > 0)
+                if (Border.Size > 0)
                 {
-                    using (var pen = new Pen(BorderColor, BorderWidth))
+                    using (var pen = new Pen(Border.Color, Border.Size))
                     {
                         graphics.DrawRectangle(pen, position.X, position.Y, Size.Width, Size.Height);
                     }
