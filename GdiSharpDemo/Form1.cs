@@ -85,13 +85,13 @@ namespace GdiSharpDemo
             };
             var childRect = new GdiRectangle
             {
-                Position = new PointF(50, 50),
+                Margin = new PointF(50, 50),
                 Size = new SizeF(600, 350),
                 Color = Color.Gray
             };
 
             var component = CreateComponent(cboComponent.SelectedItem.ToString());
-            component.Position = new PointF((float)numMarginLeft.Value, (float)numMarginTop.Value);
+            component.Margin = new PointF((float)numMarginLeft.Value, (float)numMarginTop.Value);
             component.HorizontalAlignment = (GdiSharp.Enum.GdiHorizontalAlign)cboHorizontalAlignment.SelectedItem;
             component.VerticalAlignment = (GdiSharp.Enum.GdiVerticalAlign)cboVerticalAlignment.SelectedItem;
 
@@ -123,7 +123,7 @@ namespace GdiSharpDemo
                 case nameof(GdiRectangle):
                     return new GdiRectangle
                     {
-                        Position = new PointF(5, 5),
+                        Margin = new PointF(5, 5),
                         Size = new SizeF(100, 50),
                         Color = Color.Yellow
                     };
@@ -131,7 +131,7 @@ namespace GdiSharpDemo
                 case nameof(GdiHozLine):
                     return new GdiHozLine
                     {
-                        Position = new PointF(5, 5),
+                        Margin = new PointF(5, 5),
                         Length = 200,
                         Color = Color.Cyan
                     };
@@ -139,7 +139,7 @@ namespace GdiSharpDemo
                 case nameof(GdiVerLine):
                     return new GdiVerLine
                     {
-                        Position = new PointF(5, 5),
+                        Margin = new PointF(5, 5),
                         Color = Color.Cyan,
                         Length = 200
                     };

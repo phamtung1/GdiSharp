@@ -11,7 +11,7 @@ namespace GdiSharp.Components.Base
 
         GdiVerticalAlign VerticalAlignment { get; set; }
 
-        PointF Position { get; set; }
+        PointF Margin { get; set; }
 
         void Render(Graphics graphics);
     }

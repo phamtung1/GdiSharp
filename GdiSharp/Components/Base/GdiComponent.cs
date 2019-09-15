@@ -14,7 +14,7 @@ namespace GdiSharp.Components.Base
 
         public GdiComponent Parent { get; set; }
 
-        public PointF Position { get; set; } = new PointF();
+        public PointF Margin { get; set; } = new PointF();
 
         public virtual void BeforeRendering()
         {
@@ -34,7 +34,7 @@ namespace GdiSharp.Components.Base
         {
             if (this.Parent == null)
             {
-                return Position;
+                return Margin;
             }
 
             var parentAbsolutePosition = this.Parent.GetAbsolutePosition(graphics);
@@ -46,7 +46,7 @@ namespace GdiSharp.Components.Base
             switch (this.HorizontalAlignment)
             {
                 case GdiHorizontalAlign.Left:
-                    absoluteX = parentAbsolutePosition.X + this.Position.X;
+                    absoluteX = parentAbsolutePosition.X + this.Margin.X;
                     break;
 
                 case GdiHorizontalAlign.Center:
@@ -54,14 +54,14 @@ namespace GdiSharp.Components.Base
                     break;
 
                 default:
-                    absoluteX = parentAbsolutePosition.X + parentSize.Width - size.Width + this.Position.X;
+                    absoluteX = parentAbsolutePosition.X + parentSize.Width - size.Width - this.Margin.X;
                     break;
             }
 
             switch (this.VerticalAlignment)
             {
                 case GdiVerticalAlign.Top:
-                    absoluteY = parentAbsolutePosition.Y + this.Position.Y;
+                    absoluteY = parentAbsolutePosition.Y + this.Margin.Y;
                     break;
 
                 case GdiVerticalAlign.Middle:
@@ -69,7 +69,7 @@ namespace GdiSharp.Components.Base
                     break;
 
                 default:
-                    absoluteY = parentAbsolutePosition.Y + parentSize.Height - size.Height + this.Position.Y;
+                    absoluteY = parentAbsolutePosition.Y + parentSize.Height - size.Height - this.Margin.Y;
                     break;
             }
 
