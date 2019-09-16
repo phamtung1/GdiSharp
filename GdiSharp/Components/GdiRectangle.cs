@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
-using GdiSharp.Components.Base;
+﻿using GdiSharp.Components.Base;
 using GdiSharp.Models;
+using System;
+using System.Drawing;
 
 namespace GdiSharp.Components
 {
@@ -24,7 +24,7 @@ namespace GdiSharp.Components
             }
 
             var position = GetAbsolutePosition(graphics);
-            using (var brush = new SolidBrush(this.Color))
+            using (var brush = this.GetFillBrush(graphics))
             {
                 graphics.FillRectangle(brush, position.X, position.Y, this.Size.Width, this.Size.Height);
                 if (Border.Size > 0)

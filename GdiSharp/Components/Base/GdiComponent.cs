@@ -1,6 +1,5 @@
-﻿using System;
+﻿using GdiSharp.Enum;
 using System.Drawing;
-using GdiSharp.Enum;
 
 namespace GdiSharp.Components.Base
 {
@@ -27,6 +26,11 @@ namespace GdiSharp.Components.Base
         protected virtual SizeF GetComponentSize(Graphics graphics)
         {
             return new SizeF(0, 0);
+        }
+
+        protected virtual Brush GetFillBrush(Graphics graphics)
+        {
+            return new SolidBrush(Color);
         }
 
         protected virtual PointF GetAbsolutePosition(Graphics graphics)
