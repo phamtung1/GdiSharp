@@ -1,4 +1,5 @@
 ﻿using GdiSharp.Components.Base;
+using GdiSharp.Models;
 using System.Drawing;
 
 namespace GdiSharp.Components
@@ -7,20 +8,24 @@ namespace GdiSharp.Components
     {
         public string Content { get; set; }
 
-        public Font Font { get; set; }
+        public SlimFont Font { get; set; }
 
         public override void Render(Graphics graphics)
         {
             using (var brush = new SolidBrush(this.Color))
+            using (var font = this.Font.ToFatFont())
             {
                 var position = GetAbsolutePosition(graphics);
-                graphics.DrawString(this.Content, this.Font, brush, position);
+                graphics.DrawString(this.Content, font, brush, position);
             }
         }
 
         protected override SizeF GetComponentSize(Graphics graphics)
         {
-            return graphics.MeasureString(this.Content, this.Font);
+            using (var font = this.Font.ToFatFont())
+            {
+                return graphics.MeasureString(this.Content, font);
+            }
         }
     }
 }

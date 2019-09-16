@@ -1,5 +1,6 @@
 ﻿using GdiSharp.Components;
 using GdiSharp.Components.Base;
+using GdiSharp.Models;
 using GdiSharp.Renderer;
 using System;
 using System.Drawing;
@@ -115,7 +116,7 @@ namespace GdiSharpDemo
                 case nameof(GdiText):
                     return new GdiText
                     {
-                        Font = this.Font,
+                        Font = SlimFont.FromFatFont(this.Font),
                         Content = "AAA dfdfgf",
                         Color = Color.Cyan,
                     };
