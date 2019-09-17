@@ -50,7 +50,7 @@ namespace GdiSharp.Components
         {
             if (RowLinesVisible)
             {
-                var numOfRows = (int)Math.Ceiling(Size.Height / CellSize.Height);
+                var numOfRows = (int)Math.Ceiling(Size.Height / CellSize.Height) + 1;
                 for (int i = 0; i < numOfRows; i++)
                 {
                     var y = position.Y + i * CellSize.Height;
