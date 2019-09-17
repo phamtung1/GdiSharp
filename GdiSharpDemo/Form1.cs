@@ -1,5 +1,6 @@
 ﻿using GdiSharp.Components;
 using GdiSharp.Components.Base;
+using GdiSharp.Enum;
 using GdiSharp.Models;
 using GdiSharp.Renderer;
 using System;
@@ -117,8 +118,9 @@ namespace GdiSharpDemo
                     return new GdiText
                     {
                         Font = SlimFont.FromFatFont(this.Font),
-                        Content = "AAA dfdfgf",
+                        Content = "First Line\nSecond Line",
                         Color = Color.Cyan,
+                        TextAlign = StringAlignment.Near
                     };
 
                 case nameof(GdiRectangle):

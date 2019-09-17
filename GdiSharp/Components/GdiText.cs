@@ -1,5 +1,6 @@
 ﻿using GdiSharp.Components.Base;
 using GdiSharp.Models;
+using System;
 using System.Drawing;
 
 namespace GdiSharp.Components
@@ -10,21 +11,30 @@ namespace GdiSharp.Components
 
         public SlimFont Font { get; set; }
 
-        public bool IsTextAlignRight { get; set; }
-
+        public StringAlignment TextAlign { get; set; } = StringAlignment.Near;
+        
         public override void Render(Graphics graphics)
         {
+            if(this.Font.Size == 0 || string.IsNullOrEmpty(this.Font.Name))
+            {
+                throw new ArgumentException("Invalid font");
+            }
+
             using (var brush = new SolidBrush(this.Color))
             using (var font = this.Font.ToFatFont())
             using (StringFormat stringFormat = new StringFormat())
             {
                 var position = GetAbsolutePosition(graphics);
-
-                if (this.IsTextAlignRight)
+                stringFormat.Alignment = TextAlign;
+                if (TextAlign == StringAlignment.Far)
                 {
                     var size = GetComponentSize(graphics);
-                    stringFormat.Alignment = StringAlignment.Far;
                     position.X += size.Width;
+                }
+                else if (TextAlign == StringAlignment.Center)
+                {
+                    var size = GetComponentSize(graphics);
+                    position.X += size.Width / 2;
                 }
 
                 graphics.DrawString(this.Content, font, brush, position, stringFormat);
