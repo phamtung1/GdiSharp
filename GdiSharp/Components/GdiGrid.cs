@@ -1,5 +1,4 @@
-﻿using GdiSharp.Components.Base;
-using System;
+﻿using System;
 using System.Drawing;
 
 namespace GdiSharp.Components
@@ -11,8 +10,6 @@ namespace GdiSharp.Components
         public Color LineColor { get; set; } = Color.LightGray;
 
         public int LineWidth { get; set; } = 1;
-
-        public bool GridBorderVisible { get; set; }
 
         public bool RowLinesVisible { get; set; } = true;
 
@@ -40,10 +37,7 @@ namespace GdiSharp.Components
 
         private void DrawGridBorder(Graphics graphics, PointF position, Pen pen)
         {
-            if (GridBorderVisible)
-            {
-                graphics.DrawRectangle(pen, position.X, position.Y, Size.Width, Size.Height);
-            }
+            graphics.DrawRectangle(pen, position.X, position.Y, Size.Width, Size.Height);
         }
 
         private void DrawRowLines(Graphics graphics, PointF position, Pen pen)

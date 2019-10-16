@@ -12,12 +12,17 @@ namespace GdiSharp.Components
         public SlimFont Font { get; set; }
 
         public StringAlignment TextAlign { get; set; } = StringAlignment.Near;
-        
+
         public override void Render(Graphics graphics)
         {
-            if(this.Font.Size == 0 || string.IsNullOrEmpty(this.Font.Name))
+            if (this.Font.Size == 0 || string.IsNullOrEmpty(this.Font.Name))
             {
                 throw new ArgumentException("Invalid font");
+            }
+
+            if (this.Color == Color.Empty)
+            {
+                this.Color = Color.Black;
             }
 
             using (var brush = new SolidBrush(this.Color))
