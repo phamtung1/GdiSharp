@@ -19,6 +19,7 @@ namespace GdiSharp.Components
 
         public override void Render(Graphics graphics)
         {
+            base.Render(graphics);
             var position = GetAbsolutePosition(graphics);
             using (var pen = new Pen(this.LineColor, LineWidth))
             {
@@ -44,7 +45,7 @@ namespace GdiSharp.Components
         {
             if (RowLinesVisible)
             {
-                var numOfRows = (int)Math.Ceiling(Size.Height / CellSize.Height) + 1;
+                var numOfRows = (int)Math.Ceiling(Size.Height / CellSize.Height);
                 for (int i = 0; i < numOfRows; i++)
                 {
                     var y = position.Y + i * CellSize.Height;
