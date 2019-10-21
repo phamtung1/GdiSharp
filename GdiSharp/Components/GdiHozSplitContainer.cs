@@ -10,9 +10,9 @@ namespace GdiSharp.Components
 
         protected GdiRectangle RightPanel { get; set; }
 
-        public override void BeforeRendering()
+        public override void BeforeRendering(Graphics graphics)
         {
-            base.BeforeRendering();
+            base.BeforeRendering(graphics);
             if (LeftPanelWidth > 0)
             {
                 CreateLeftPanel();

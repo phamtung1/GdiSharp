@@ -5,7 +5,7 @@ namespace GdiSharp.Components.Base
 {
     public interface IGdiComponent
     {
-        Color Color { get; set; }
+        Color BackgroundColor { get; set; }
 
         GdiHorizontalAlign HorizontalAlignment { get; set; }
 

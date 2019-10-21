@@ -20,12 +20,12 @@ namespace GdiSharp.Components
                 throw new ArgumentException("Invalid font");
             }
 
-            if (this.Color == Color.Empty)
+            if (this.BackgroundColor == Color.Empty)
             {
-                this.Color = Color.Black;
+                this.BackgroundColor = Color.Black;
             }
 
-            using (var brush = new SolidBrush(this.Color))
+            using (var brush = new SolidBrush(this.BackgroundColor))
             using (var font = this.Font.ToFatFont())
             using (StringFormat stringFormat = new StringFormat())
             {

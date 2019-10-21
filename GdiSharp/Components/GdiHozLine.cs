@@ -17,7 +17,7 @@ namespace GdiSharp.Components
         public override void Render(Graphics graphics)
         {
             var position = GetAbsolutePosition(graphics);
-            using (var pen = new Pen(this.Color, LineHeight))
+            using (var pen = new Pen(this.BackgroundColor, LineHeight))
             {
                 graphics.DrawLine(pen, position.X, position.Y, position.X + this.Length, position.Y);
             }

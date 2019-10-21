@@ -9,13 +9,13 @@ namespace GdiSharp.Components.Base
 
         public GdiVerticalAlign VerticalAlignment { get; set; } = GdiVerticalAlign.Top;
 
-        public Color Color { get; set; }
+        public Color BackgroundColor { get; set; }
 
         public GdiComponent Parent { get; set; }
 
         public PointF Margin { get; set; } = new PointF();
 
-        public virtual void BeforeRendering()
+        public virtual void BeforeRendering(Graphics graphics)
         {
         }
 
@@ -30,7 +30,7 @@ namespace GdiSharp.Components.Base
 
         protected virtual Brush GetFillBrush(Graphics graphics)
         {
-            return new SolidBrush(Color);
+            return new SolidBrush(BackgroundColor);
         }
 
         protected virtual PointF GetAbsolutePosition(Graphics graphics)
