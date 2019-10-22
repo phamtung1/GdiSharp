@@ -20,7 +20,7 @@ namespace GdiSharp.Components
         {
             if (Size == null || Size.Width <= 0 || Size.Height <= 0)
             {
-                throw new ArgumentException("Invalid width/height!");
+                throw new ArgumentException(Size + ": Invalid width/height!");
             }
 
             var position = GetAbsolutePosition(graphics);
