@@ -85,13 +85,13 @@ namespace GdiSharpDemo
             var rootContainer = new GdiRectangle
             {
                 Size = image.Size,
-                Color = Color.White
+                BackgroundColor = Color.White
             };
             var childRect = new GdiRectangle
             {
                 Margin = new PointF(50, 50),
                 Size = new SizeF(600, 350),
-                Color = Color.Gray
+                BackgroundColor = Color.Gray
             };
 
             var component = CreateComponent(cboComponent.SelectedItem.ToString());
@@ -121,7 +121,7 @@ namespace GdiSharpDemo
                     {
                         Font = SlimFont.FromFatFont(this.Font),
                         Content = "First Line\nSecond Line",
-                        Color = Color.Cyan,
+                        BackgroundColor = Color.Cyan,
                         TextAlign = StringAlignment.Near
                     };
 
@@ -130,7 +130,7 @@ namespace GdiSharpDemo
                     {
                         Margin = new PointF(5, 5),
                         Size = new SizeF(100, 50),
-                        Color = Color.Yellow
+                        BackgroundColor = Color.Yellow
                     };
 
                 case nameof(GdiHozLine):
@@ -138,14 +138,14 @@ namespace GdiSharpDemo
                     {
                         Margin = new PointF(5, 5),
                         Length = 200,
-                        Color = Color.Cyan
+                        BackgroundColor = Color.Cyan
                     };
 
                 case nameof(GdiVerLine):
                     return new GdiVerLine
                     {
                         Margin = new PointF(5, 5),
-                        Color = Color.Cyan,
+                        BackgroundColor = Color.Cyan,
                         Length = 200
                     };
 
@@ -154,8 +154,7 @@ namespace GdiSharpDemo
                     {
                         CellSize = new SizeF(20, 10),
                         Size = new SizeF(150, 100),
-                        LineColor = Color.Cyan,
-                        GridBorderVisible = true
+                        LineColor = Color.Cyan
                     };
 
                 case nameof(GdiDataGrid):
