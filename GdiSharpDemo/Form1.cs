@@ -1,11 +1,12 @@
-﻿using GdiSharp.Components;
-using GdiSharp.Components.Base;
-using GdiSharp.Enum;
-using GdiSharp.Models;
-using GdiSharp.Renderer;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using GdiSharp.Components;
+using GdiSharp.Components.Base;
+using GdiSharp.Components.DataGrid;
+using GdiSharp.Models;
+using GdiSharp.Renderer;
 
 namespace GdiSharpDemo
 {
@@ -37,6 +38,7 @@ namespace GdiSharpDemo
             cboComponent.Items.Add(nameof(GdiHozLine));
             cboComponent.Items.Add(nameof(GdiVerLine));
             cboComponent.Items.Add(nameof(GdiGrid));
+            cboComponent.Items.Add(nameof(GdiDataGrid));
 
             cboComponent.SelectedIndex = 0;
             cboComponent.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -154,6 +156,24 @@ namespace GdiSharpDemo
                         Size = new SizeF(150, 100),
                         LineColor = Color.Cyan,
                         GridBorderVisible = true
+                    };
+
+                case nameof(GdiDataGrid):
+                    return new GdiDataGrid
+                    {
+                        Size = new SizeF(400, 300),
+                        LineColor = Color.Cyan,
+                        Rows = 10,
+                        Columns = 10,
+                        MergedCells = new List<DataGridMergedCell>
+                        {
+                            new DataGridMergedCell(1, 1, 3, 3)
+                        },
+                        Texts = new string[][]
+                        {
+                            new []{ "1", "1", "1" },
+                            new []{ "1", "1", "", "", "1" },
+                        }
                     };
 
                 default:

@@ -6,6 +6,8 @@ namespace GdiSharp.Models
     {
         public static readonly SlimFont Default = new SlimFont("Arial", 12, FontStyle.Regular);
 
+        public static readonly SlimFont DefaultSmall = new SlimFont("Arial", 10, FontStyle.Regular);
+
         public string Name { get; set; }
 
         public float Size { get; set; }

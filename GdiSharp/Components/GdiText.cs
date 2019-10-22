@@ -9,9 +9,11 @@ namespace GdiSharp.Components
     {
         public string Content { get; set; }
 
-        public SlimFont Font { get; set; }
+        public SlimFont Font { get; set; } = SlimFont.DefaultSmall;
 
         public StringAlignment TextAlign { get; set; } = StringAlignment.Near;
+
+        public Color TextColor { get; set; } = Color.Black;
 
         public override void Render(Graphics graphics)
         {
@@ -25,7 +27,7 @@ namespace GdiSharp.Components
                 this.BackgroundColor = Color.Black;
             }
 
-            using (var brush = new SolidBrush(this.BackgroundColor))
+            using (var brush = new SolidBrush(this.TextColor))
             using (var font = this.Font.ToFatFont())
             using (StringFormat stringFormat = new StringFormat())
             {
