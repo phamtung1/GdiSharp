@@ -85,6 +85,11 @@ namespace GdiSharp.Components.DataGrid
 
         private DataGridMergedCell GetMergedCell(int row, int col)
         {
+            if(MergedCells == null)
+            {
+                return null;
+            }
+
             foreach (var item in MergedCells)
             {
                 if (item.FromRow == row && item.FromCol == col)
@@ -98,6 +103,11 @@ namespace GdiSharp.Components.DataGrid
 
         private bool IsInMergedPositions(int row, int col)
         {
+            if (MergedCells == null)
+            {
+                return false;
+            }
+
             foreach (var item in MergedCells)
             {
                 if (item.FromRow <= row && item.ToRow >= row && item.FromCol <= col && item.ToCol >= col)
