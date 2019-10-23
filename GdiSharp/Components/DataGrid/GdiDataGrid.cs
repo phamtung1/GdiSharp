@@ -56,7 +56,7 @@ namespace GdiSharp.Components.DataGrid
                     var text = new GdiText
                     {
                         Content = GetText(row,col),
-                        TextColor = Color.White,
+                        TextColor = Color.Black,
                         HorizontalAlignment = Enum.GdiHorizontalAlign.Center,
                         VerticalAlignment = Enum.GdiVerticalAlign.Middle
                     };
