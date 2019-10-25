@@ -22,26 +22,28 @@ namespace GdiSharp.Components
                 throw new ArgumentException("Invalid font");
             }
 
-            if (this.BackgroundColor == Color.Empty)
-            {
-                this.BackgroundColor = Color.Black;
-            }
-
             using (var brush = new SolidBrush(this.TextColor))
             using (var font = this.Font.ToFatFont())
             using (StringFormat stringFormat = new StringFormat())
             {
                 var position = GetAbsolutePosition(graphics);
                 stringFormat.Alignment = TextAlign;
+                var size = GetComponentSize(graphics);
                 if (TextAlign == StringAlignment.Far)
                 {
-                    var size = GetComponentSize(graphics);
                     position.X += size.Width;
                 }
                 else if (TextAlign == StringAlignment.Center)
                 {
-                    var size = GetComponentSize(graphics);
                     position.X += size.Width / 2;
+                }
+
+                if (BackgroundColor != Color.Empty)
+                {
+                    using (var backgroundBrush = new SolidBrush(this.BackgroundColor))
+                    {
+                        graphics.FillRectangle(backgroundBrush, position.X, position.Y, size.Width, size.Height);
+                    }
                 }
 
                 graphics.DrawString(this.Content, font, brush, position, stringFormat);

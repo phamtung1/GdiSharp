@@ -58,7 +58,8 @@ namespace GdiSharp.Components.DataGrid
                         Content = GetText(row,col),
                         TextColor = Color.Black,
                         HorizontalAlignment = Enum.GdiHorizontalAlign.Center,
-                        VerticalAlignment = Enum.GdiVerticalAlign.Middle
+                        VerticalAlignment = Enum.GdiVerticalAlign.Middle,
+                        TextAlign = StringAlignment.Center
                     };
 
                     cell.AddChild(text);
