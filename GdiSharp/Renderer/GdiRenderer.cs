@@ -15,7 +15,7 @@ namespace GdiSharp.Renderer
 
         public void Render(GdiContainer component)
         {
-            using (var graphics = Graphics.FromImage(_image))
+            using (var graphics = GetGraphics())
             {
                 RenderComponent(graphics, component);
             }
@@ -23,7 +23,9 @@ namespace GdiSharp.Renderer
 
         public Graphics GetGraphics()
         {
-            return Graphics.FromImage(_image);
+            var graphics = Graphics.FromImage(_image);
+            graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            return graphics;
         }
 
         private void RenderComponent(Graphics graphics, GdiComponent component)

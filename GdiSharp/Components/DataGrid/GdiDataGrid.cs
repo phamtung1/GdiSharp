@@ -18,6 +18,8 @@ namespace GdiSharp.Components.DataGrid
 
         public string[][] Texts { get; set; }
 
+        public Color TextColor { get; set; } = Color.Black;
+
         public override void BeforeRendering(Graphics graphics)
         {
             if (Rows == 0 || Columns == 0)
@@ -56,7 +58,7 @@ namespace GdiSharp.Components.DataGrid
                     var text = new GdiText
                     {
                         Content = GetText(row,col),
-                        TextColor = Color.Black,
+                        TextColor = TextColor,
                         HorizontalAlignment = Enum.GdiHorizontalAlign.Center,
                         VerticalAlignment = Enum.GdiVerticalAlign.Middle,
                         TextAlign = StringAlignment.Center
