@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.numMarginLeft = new System.Windows.Forms.NumericUpDown();
             this.numMarginTop = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMarginLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMarginTop)).BeginInit();
@@ -191,11 +192,22 @@
             0,
             0});
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(943, 421);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 54);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 547);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.numMarginTop);
             this.Controls.Add(this.numMarginLeft);
             this.Controls.Add(this.label5);
@@ -234,6 +246,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numMarginLeft;
         private System.Windows.Forms.NumericUpDown numMarginTop;
+        private System.Windows.Forms.Button button1;
     }
 }
 
