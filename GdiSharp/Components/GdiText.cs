@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace GdiSharp.Components
 {
-    public class GdiText : GdiContainer
+    public class GdiText : GdiComponent
     {
         public string Content { get; set; }
 

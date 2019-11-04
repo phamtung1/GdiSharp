@@ -91,7 +91,7 @@ namespace GdiSharpDemo
             {
                 Margin = new PointF(50, 50),
                 Size = new SizeF(600, 350),
-                BackgroundColor = Color.Gray
+                BackgroundColor = Color.SlateGray
             };
 
             var component = CreateComponent(cboComponent.SelectedItem.ToString());
@@ -110,6 +110,8 @@ namespace GdiSharpDemo
             }
 
             pictureBox1.Image = image;
+
+            image.Save(cboComponent.SelectedItem.ToString() + ".jpg");
         }
 
         private GdiComponent CreateComponent(string name)
@@ -119,7 +121,7 @@ namespace GdiSharpDemo
                 case nameof(GdiText):
                     return new GdiText
                     {
-                        Font = SlimFont.FromFatFont(this.Font),
+                        Font = SlimFont.Default,
                         Content = "First Line\nSecond Line",
                         BackgroundColor = Color.Cyan,
                         TextAlign = StringAlignment.Near
@@ -153,7 +155,7 @@ namespace GdiSharpDemo
                     return new GdiGrid
                     {
                         CellSize = new SizeF(20, 10),
-                        Size = new SizeF(150, 100),
+                        Size = new SizeF(200, 100),
                         LineColor = Color.Cyan
                     };
 
@@ -162,6 +164,7 @@ namespace GdiSharpDemo
                     {
                         Size = new SizeF(400, 300),
                         LineColor = Color.Cyan,
+                        TextColor = Color.White,
                         Rows = 10,
                         Columns = 10,
                         MergedCells = new List<DataGridMergedCell>
@@ -178,6 +181,11 @@ namespace GdiSharpDemo
                 default:
                     throw new ArgumentException("Invalid name");
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 }
